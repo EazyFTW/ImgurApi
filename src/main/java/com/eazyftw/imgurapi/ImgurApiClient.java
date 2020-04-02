@@ -266,7 +266,7 @@ public class ImgurApiClient {
 		client.interceptors().add(new ImgurInterceptor());
 
 		HttpLoggingInterceptor logging = new HttpLoggingInterceptor(  );
-		logging.setLevel(Level.BODY);
+		logging.setLevel(Level.NONE);
 		client.interceptors().add( logging );
 			
 		
@@ -311,7 +311,7 @@ public class ImgurApiClient {
 		public com.squareup.okhttp.Response intercept(Chain chain) throws IOException {
 			Request  request  = chain.request();
 
-			log.fine( "API Call: " + request.url().toString() );
+			//log.fine( "API Call: " + request.url().toString() );
 			request = authService().buildAuthenticatedRequest( request );
 
 			com.squareup.okhttp.Response response = chain.proceed(request);
